@@ -11,12 +11,12 @@ public static class ServiceDefaultExtensions
 
     public static IHostApplicationBuilder AddBasicServiceDefaults(this IHostApplicationBuilder builder)
     {
-        builder.AddDefaultHealthChecks();
+        builder.AddHealthCheckDefaults();
 
         return builder;
     }
 
-    public static IHostApplicationBuilder AddDefaultHealthChecks(this IHostApplicationBuilder builder)
+    public static IHostApplicationBuilder AddHealthCheckDefaults(this IHostApplicationBuilder builder)
     {
         builder.Services.AddHealthChecks()
             .AddCheck("self", () => HealthCheckResult.Healthy(), ["live"]);
