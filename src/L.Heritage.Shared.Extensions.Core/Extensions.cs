@@ -6,6 +6,15 @@ public static class ServiceDefaultExtensions
     {
         builder.AddBasicServiceDefaults();
 
+        builder.Services.AddServiceDiscovery();
+
+        builder.Services.ConfigureHttpClientDefaults(http =>
+        {
+            http.AddStandardResilienceHandler();
+
+            http.AddServiceDiscovery();
+        });
+
         return builder;
     }
 
